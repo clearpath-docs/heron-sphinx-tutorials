@@ -25,6 +25,10 @@ Heron has a suite of optional payloads called accessories. These payloads can be
       <td><p><strong>Default</strong> </p></td>
       <td><p><strong>Description</strong> </p></td>
     </tr>
+    <tr>  <td><span class="anchor" id="line-11"></span><p><tt>HERON_URDF_EXTRAS</tt> </p></td>
+      <td><p><tt>empty.urdf</tt> </p></td>
+      <td><p>Path to a URDF file to add additional joints/links/accessories to Heron's model</p></td>
+    </tr>
     <tr>  <td><span class="anchor" id="line-11"></span><p><tt>HERON_IMU_UM6_PORT</tt> </p></td>
       <td><p><tt>/dev/clearpath/imu</tt> </p></td>
       <td><p>The file that the Heron's UM6 IMU is mapped to</p></td>
