@@ -16,13 +16,13 @@ set up on your Ubuntu desktop, and install the Heron-specific metapackages for d
 
 .. code:: bash
 
-    sudo apt-get install ros-melodic-heron-description ros-melodic-heron-viz ros-melodic-heron-desktop
+    sudo apt-get install ros-kinetic-heron-description ros-kinetic-heron-viz ros-kinetic-heron-desktop
 
 Then install the ROS unmanned underwater vehicles simulation package:
 
 .. code:: bash
 
-    sudo apt-get install ros-melodic-uuv-simulator
+    sudo apt-get install ros-kinetic-uuv-simulator
 
 Finally, create a catkin workspace and checkout the heron_simulation package and build it:
 

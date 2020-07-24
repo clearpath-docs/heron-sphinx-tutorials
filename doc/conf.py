@@ -40,9 +40,9 @@ html_sidebars = {
 }
 
 rst_prolog = """
-.. |ros_distro| replace:: melodic
-.. |ubuntu_distro| replace:: bionic
-.. |ubuntu_version| replace:: 18.04
+.. |ros_distro| replace:: kinetic
+.. |ubuntu_distro| replace:: xenial
+.. |ubuntu_version| replace:: 16.04
 """
 #.. ubuntu_distro: bionic
 
