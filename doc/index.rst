@@ -32,7 +32,6 @@ skip the introductory chapters and jump straight to these ones.
     simulation
     network
     startup
-    calibration
     update
 
 .. toctree::
