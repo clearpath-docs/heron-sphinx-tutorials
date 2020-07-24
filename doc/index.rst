@@ -31,11 +31,9 @@ skip the introductory chapters and jump straight to these ones.
     Overview <self>
     simulation
     network
-    navigation
     startup
     calibration
     update
-    cartographer
 
 .. toctree::
     :titlesonly:
