@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>heron_tutorials</name>
+  <version>0.1.0</version>
+  <description>Heron's tutorials.</description>
+  <maintainer email="civerachb@clearpathrobotics.com">Chris Iverach-Brereton</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/Robots/Heron</url>
+  <author email="civerachb@clearpathrobotics.com">Chris Iverach-Brereton</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rosdoc_lite</build_depend>
+
+  <export>
+  </export>
+</package>
