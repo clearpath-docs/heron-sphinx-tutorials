@@ -40,3 +40,4 @@ skip the introductory chapters and jump straight to these ones.
     :caption: Heron Packages
 
     description
+    additional_sim_worlds
