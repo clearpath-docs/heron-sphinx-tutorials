@@ -17,7 +17,7 @@ This package provides a `URDF <http://wiki.ros.org/urdf>`_ model of Heron.  For 
 Accessories
 ------------
 
-Heron has a suite of optional payloads called accessories. These payloads can be enabled and placed on Herib using environment variables specified at the time the `xacro <http://wiki.ros.org/xacro>`_ is rendered to URDF. Available accessory vars are:
+Heron has a suite of optional payloads called accessories. These payloads can be enabled and placed on Heron using environment variables specified at the time the `xacro <http://wiki.ros.org/xacro>`_ is rendered to URDF. Available accessory vars are:
 
 .. raw:: html
 
