@@ -31,6 +31,8 @@ skip the introductory chapters and jump straight to these ones.
     Overview <self>
     simulation
     network
+    network-base-station
+    network-access-point
     startup
     update
 

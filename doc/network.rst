@@ -3,7 +3,7 @@ Setting Up Heron's Network
 
 Heron is equipped with a Microhard wireless module to allow wireless connectivity.  Depending on the confguration
 ordered, this can be configured to operate as a wireless access point on the robot itself, or it can be configured
-to connect to a portable base-station that remains on shore while the robot operates.
+to connect to a portable base station that remains on shore while the robot operates.
 
 
 Setup
@@ -38,45 +38,6 @@ login.
 .. _This: https://linuxize.com/post/how-to-setup-passwordless-ssh-login/
 
 
-Connecting to a Base Station
-------------------------------
-
-If your robot came with a base station you can connect your computer to the base station's wireless network using
-your computers normal tools.  The robot will connect to the base station automatically when both are powered-on and
-in-range of each other.  The following IP addresses will be used by the base station:
-
-+---------------------+----------------------------------+
-|IP Address/Range     | Use                              |
-+=====================+==================================+
-| 192.168.131.1       | The Heron itself                 |
-+---------------------+----------------------------------+
-| 192.168.131.50      | The base station                 |
-+---------------------+----------------------------------+
-| 192.168.131.100-254 | DHCP range for connected devices |
-+---------------------+----------------------------------+
-
-The SSID of the base station will look something like ``<robot's hostname>-base-station``, for example
-``cpr-m300-1234-base-station``.
-
-
-Connecting Directly to the Heron
-----------------------------------
-
-If your Heron did not ship with a base station then you can connect directly to the robot in much the same way.
-Open your computer's wireless network manager.  The network's SSID will be something of the form ``<robot's hostname>``,
-for example ``cpr-m300-1234``.
-
-When operating in access-point mode, the following IP addresses are used:
-
-+---------------------+----------------------------------+
-|IP Address/Range     | Use                              |
-+=====================+==================================+
-| 192.168.131.1       | The Heron itself                 |
-+---------------------+----------------------------------+
-| 192.168.131.100-254 | DHCP range for connected devices |
-+---------------------+----------------------------------+
-
-
 Network Configuration on the Heron
 ------------------------------------
 
@@ -84,6 +45,13 @@ Depending on when your heron shipped, the networking may be configured in one of
 ``/etc/network/interfaces`` or using ``netplan``.  Most older Herons will use the ``interfaces`` file, while newer
 ones have switched to ``netplan``, as this has become the standard method of configuring networks in more recent
 releases of Ubuntu.
+
+.. note::
+
+    Heron's network can operate in two modes: with a base station, or as a stand-alone access point.
+
+    Please see :doc:`network-base-station` or :doc:`network-access-point` for further details on how to operate
+    Heron in each of these modes.
 
 
 **Network configuration with Netplan**
@@ -121,8 +89,8 @@ Netplan uses yaml files to configure the network interfaces of the robot.  On He
               - 8.8.4.4
           gateway4: 192.168.131.50
 
-The file above is for a Heron with a base-station.  If your robot does not have a base-station the last line
-``gateway4: 192.168.131.50`` will be omitted.
+The file above is for a Heron with a base station.  If your robot does not have a base station the ``gateway4`` and
+``nameservers`` keys may be omitted.
 
 
 **Network configuration with /etc/network/interfaces**
@@ -130,7 +98,7 @@ The file above is for a Heron with a base-station.  If your robot does not have 
 .. note::
 
     If your Heron is already configured to use ``netplan`` we do not advise rolling back to ``interfaces``; we have had
-    reports of connectivity problems with base-stations on Herons running Ubuntu 18.04 when using the ``interfaces``
+    reports of connectivity problems with base stations on Herons running Ubuntu 18.04 when using the ``interfaces``
     file to configure the network.
 
 On Ubuntu 18.04 you can revert to the older ``/etc/network/interfaces`` method of configuring the network interfaces by
@@ -142,24 +110,37 @@ running
 
 The network interfaces configuration file, located at ``/etc/network/interfaces`` should contain the following:
 
-.. code-block:: text
+.. code-block:: kconfig
 
-    auto lo br0 br0:0
+    auto lo br0
     iface lo inet loopback
 
     # Bridge together physical ports on machine, assign standard Clearpath Robot IP.
     iface br0 inet static
-      bridge_ports regex (eth.*)|(en.*)
-      address 192.168.131.1
-      netmask 255.255.255.0
-      bridge_maxwait 0
-      # if you do not have a base-station, omit the following
-      gateway 192.168.131.50
-      dns-nameservers 8.8.8.8 8.8.4.4
+      bridge_ports      regex (eth.*)|(en.*)
+      address           192.168.131.1
+      netmask           255.255.255.0
+      bridge_maxwait    0
+      # if you do not have a base station, omit the following
+      gateway           192.168.131.50
+      dns-nameservers   8.8.8.8  8.8.4.4
 
-    # Also seek out DHCP IP on those ports, for the sake of easily getting online,
-    # maintenance, ethernet radio support, etc.
-    iface br0:0 inet dhcp
+
+Note on Wicd
+-------------
+
+The wireless networking manager ``wicd`` is frequently installed on Clearpath robots.  While this application is not
+needed on Heron under most circumstances, some users choose to install it.
+
+``wicd`` can also manage wired interfaces, which can cause problems with the static networking configuration defined
+above.  If your robot has ``wicd`` installed, ensure that it is not managing the wired network by running
+
+.. code-block:: bash
+
+    wicd-curses
+
+Press ``shift+P`` to open ``wicd``'s preferences, use the arrow keys to scroll down to the Wired Interface and
+delete any text in that field.  Save the preferences and close ``wicd-curses``.
 
 
 Remote ROS Connection
