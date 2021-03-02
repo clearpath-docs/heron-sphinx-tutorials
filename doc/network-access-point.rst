@@ -8,11 +8,6 @@ down-side of making it harder to connect Heron to the internet.
 If your Heron did not ship with a base station it will come pre-configured to operate as an access point.
 
 
-Configuring the Microhard as a Wireless DHCP Server
------------------------------------------------------
-
-TODO
-
 Connecting Directly to the Heron
 ----------------------------------
 

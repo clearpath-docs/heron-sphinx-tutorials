@@ -8,16 +8,15 @@ If your Heron shipped with a base station, the robot and base station will come 
 each other.
 
 
-Microhard Configuration
-------------------------
-
-TODO
-
-
 Connecting the Base Station to the Internet
 --------------------------------------------
 
-TODO
+Heron's base station has a WAN port located on the bottom of the case.  Connect the base station to your network by
+connecting an ethernet cable into this port, ensuring that the other end of the cable is connected to a router or
+switch with internet access.
+
+.. image:: images/base_station_wan.jpg
+    :alt: Base station WAN port
 
 In order for your Heron to access the internet through the base station you must ensure that Heron's networking is
 configured to use the base station as its primary gateway.
