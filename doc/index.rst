@@ -35,6 +35,7 @@ skip the introductory chapters and jump straight to these ones.
     network-access-point
     startup
     update
+    lights
 
 .. toctree::
     :titlesonly:
